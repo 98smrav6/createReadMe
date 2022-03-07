@@ -53,3 +53,17 @@ const questions = [
         message: 'What does the user need to know about contributing to the repo?'
     }
 ];
+
+//Function to write README file
+function writeToFile(fileName, data) {
+    return fs.writeFileSync(path.join(process.cwd(), fileName), data);
+}
+
+function init() {
+    inquirer.prompt(quetions).then(inquirerResponses => {
+        console.log('Generating README...');
+        writeToFile('README.md', generateMarkdown({ ...inquirerResponses }));
+    });
+}
+
+init();
