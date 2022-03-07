@@ -10,8 +10,17 @@ function renderLicenseBadge(license) {
 //Function that returns the license link
 //if no license, return an empty string
 function renderLicenseLink(license) {
-    if (licesnse !== 'None') {
+    if (license !== 'None') {
         return '\n* [License](#license)\n';
+    }
+    return '';
+}
+
+function renderLicenseSection(license) {
+    if (license !== 'None') {
+        return `## License
+
+    This project is licensed under the ${license} license.`;
     }
     return '';
 }
@@ -49,8 +58,8 @@ ${data.installation}
 
 ${data.usage}
 
-${renderLicesnseSection(data.license)}
-
+${renderLicenseSection(data.license)}
+  
 ## Contributing
 
 ${data.contributing}

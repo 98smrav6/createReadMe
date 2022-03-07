@@ -41,6 +41,7 @@ const questions = [
         type: 'input',
         name: 'test',
         message: 'What command should be run to run tests?',
+        default: 'npm test'
     },
     {
         type: 'input',
@@ -54,16 +55,17 @@ const questions = [
     }
 ];
 
-//Function to write README file
+// Function to write README file
 function writeToFile(fileName, data) {
     return fs.writeFileSync(path.join(process.cwd(), fileName), data);
-}
-
-function init() {
-    inquirer.prompt(quetions).then(inquirerResponses => {
-        console.log('Generating README...');
-        writeToFile('README.md', generateMarkdown({ ...inquirerResponses }));
+  }
+  
+  // Function to initialize app
+  function init() {
+    inquirer.prompt(questions).then(inquirerResponses => {
+      console.log('Generating README...');
+      writeToFile('README.md', generateMarkdown({ ...inquirerResponses }));
     });
-}
-
-init();
+  }
+  
+  init();
